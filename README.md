@@ -2,11 +2,9 @@
 
 DDoS attacks serve malicious purposes, such as disrupting online services, causing financial losses, damaging reputation, or as a smokescreen for other cybercrimes. The " Python-Amplified-DDoS-Attack-ByRhuebarbs" tool likely automates and simplifies the process of launching DDoS attacks using Python scripts.
 
-			--------------------DDoS-By Emensta  //thanks for choosing my tool! :D--------------------
+			--------------------DDoS-By Rhuebarbs //thanks for choosing my tool! :D--------------------
 
 How to run: Win/Linux
-
-https://github.com/Dynjee/Amplified-DDoS-Attack-ByRhuebarbs/blob/main/DDoSByRhuebarbs
 
 	1. git clone https://github.com/Dynjee//DDoSByRhuebarbs.git
 
