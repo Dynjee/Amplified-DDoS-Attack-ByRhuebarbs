@@ -62,7 +62,7 @@ print(VERDE + """
 """ + RESET)
 
 # Sequenced progress bar configurations
-progress_steps = [
+progress_chars = [
     "[                    ]", "[#                   ]", "[##                  ]",
     "[###                 ]", "[####                ]", "[#####               ]",
     "[######              ]", "[#######             ]", "[########            ]",
