@@ -29,10 +29,10 @@ RESET = "\033[0m"
 
 def title():
     print(VERDE + banner + RESET)
-    print(VERDE + "Distributed DDOS Attack -By Emensta" + RESET)
+    print(VERDE + "Distributed DDOS Attack -By Rhuebarbs" + RESET)
     print(VERDE + "-" * 67 + RESET)
-    print("Author : Emensta")
-    print("Github : https://github.com/EmenstaNougat")
+    print("Author : Rhuebarbs")
+    print("Github : https://github.com/Rhuebarbs")
     print(VERDE + "-" * 67 + RESET)
 
 
